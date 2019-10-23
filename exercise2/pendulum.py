@@ -9,15 +9,14 @@ m = 1 # Mass
 k = 1 # Spring constant
 delta_t = 0.01 # Timestep
 tf = 10.01 # Total time
-xeq = 0.0 # Equilibrium length
+x_eq = 0.0 # Equilibrium length. Can remove this now.
 x0 = 0.1 # Initial position
 v0 = 0.3 # Initial velocity
 
 # formulas
 def take_step(x_t, v_t):
     x_t_new = x_t + v_t * delta_t
-    delta_x = x_t_new - x_t
-    Fs_t = -k*delta_x
+    Fs_t = -k*x_t_new # Origin at x_eq
     v_new_t = (1/m)*Fs_t*delta_t + v_t
     return x_t_new, v_new_t
 
