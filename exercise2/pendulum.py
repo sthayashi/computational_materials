@@ -1,6 +1,5 @@
 import numpy as np
 import matplotlib.pyplot as plt
-import csv
 #For a known F(t), the EOM is:
 
 #d^2/dr^2 (x(t)) * m = F(t)
@@ -35,26 +34,9 @@ for t in np.arange(0.01, tf, 0.01):
     velocities.append(v)
     times.append(t)
 
-
-#fig, axs = plt.subplots(2)
-#axs[0].plot(times, positions)
-#axs[0].set_title("x(t)")
-#axs[1].plot(times, velocities)
-#axs[1].set_title("v(t)")
-#plt.show()
-
 # Store data. Whitespace delimited.
+data = np.array([times, positions, velocities])
+data = data.T
 
-#data = zip(times, positions, velocities)
-#with open('data.dat', 'w') as f:
-#    f.write("Time \t Position \t Velocity\n")
-#    writer = csv.writer(f, delimiter='\t')
-#    writer.writerows(data)
+np.savetxt('positions_velocities.dat', data, header="Time    Positions    Velocities")
 
-#data2 = np.array([times, positions, velocities])
-#data2 = data2.T
-#print(data2)
-#with open('data2.dat', 'w') as f:
-#    np.savetxt(f, data2, fmt=['%d', '%d', '%d'])
-
-np.savetxt('data2.dat', data2, header="Time    Positions    Velocities")
